@@ -1,18 +1,22 @@
 import pandas as pd
 
-def load_dataset_from_github(url: str):
+def load_oj_csv(user, repo, file, branch="main"):
     """
-    Loads a dataset directly from a GitHub raw URL.
+    Load CSV directly from GitHub repository
+    """
     
-    Parameters
-    ----------
-    url : str
-        Raw GitHub file URL
-
-    Returns
-    -------
-    pandas.DataFrame
-    """
+    url = f"https://raw.githubusercontent.com/noahshiira/econ-487-strategic-pricing/refs/heads/main/datasets/oj.csv"
     
     df = pd.read_csv(url)
     return df
+
+
+if __name__ == "__main__":
+    
+    df = load_oj_csv(
+        user="noahshiira",
+        repo="econ-487-strategic-pricing",
+        file="oj.csv"
+    )
+
+    print(df.head())
